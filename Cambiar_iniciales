@@ -1,0 +1,34 @@
+from tkinter import*
+root = Tk()
+root.config(width=300, height=200)
+# Crear caja de texto.
+
+entry1 = Entry(root)
+entry1.pack()
+entry2 = Entry(root)
+entry2.pack()
+etiqueta = Label(root)
+etiqueta["text"]=("Aqui saldrá tu texto fuckado")
+etiqueta.pack()
+def CambioEtiqueta():
+	texto1 = entry1.get()
+	texto1_lista = list(texto1)
+	texto2 = entry2.get()
+	texto2_lista = list(texto2)
+	texto1_1 = texto1_lista[0]
+	texto1_lista[0]=texto2_lista[0]
+	texto2_lista[0] = texto1_1[0]
+	etiqueta["text"] = 	"".join(texto1_lista) + " " + "".join(texto2_lista)
+button = Button(root, text="Fuckar Letras", command = CambioEtiqueta).pack()
+def callback(event):
+	texto1 = entry1.get()
+	texto1_lista = list(texto1)
+	texto2 = entry2.get()
+	texto2_lista = list(texto2)
+	texto1_1 = texto1_lista[0]
+	texto1_lista[0]=texto2_lista[0]
+	texto2_lista[0] = texto1_1[0]
+	etiqueta["text"] = 	"".join(texto1_lista) + " " + "".join(texto2_lista)
+root.bind('<Return>', callback)
+root.mainloop()
+
